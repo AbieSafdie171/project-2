@@ -36,18 +36,18 @@ def hello(request):
     if len(request) < 1:
         abort(403)
     try:
-        f = open(f'pages/{request}', 'r')
-        return send_from_directory('pages/', f'{request}'), 200
+        f = open(f'./pages/{request}', 'r')
+        return send_from_directory('./pages/', f'{request}'), 200
 
     except:
         abort(404)
 @app.errorhandler(404)
 def notFound(e):
-    return send_from_directory('pages/', '404.html'), 404
+    return send_from_directory('./pages/', '404.html'), 404
 
 @app.errorhandler(403)
 def forbidden(e):
-    return send_from_directory('pages/', '403.html'), 403
+    return send_from_directory('./pages/', '403.html'), 403
 
 
 if __name__ == "__main__":
